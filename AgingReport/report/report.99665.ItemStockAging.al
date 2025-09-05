@@ -256,15 +256,12 @@ report 99665 "Stock Aging Qty-Value"
                     ValueEntry.Reset();
                     ValueEntry.SetRange("Item No.", "No.");
                     ValueEntry.SetRange("Posting Date", 0D, EndingDate);
+                    // Apply same filters as Inventory Valuation report
                     CopyValueFiltersFromItem(ValueEntry);
-                    if not IncludeExpectedCost then
-                        ValueEntry.SetRange("Expected Cost", false);
                     ValueEntry.CalcSums("Cost Amount (Actual)", "Cost Amount (Expected)");
 
-                    if IncludeExpectedCost then
-                        ClosingBalValue := ValueEntry."Cost Amount (Actual)" + ValueEntry."Cost Amount (Expected)"
-                    else
-                        ClosingBalValue := ValueEntry."Cost Amount (Actual)";
+                    // Align with Inventory Valuation: always include Actual + Expected amounts
+                    ClosingBalValue := ValueEntry."Cost Amount (Actual)" + ValueEntry."Cost Amount (Expected)";
 
                     if ClosingBalQty <> 0 then
                         TotalUnitCost := ClosingBalValue / ClosingBalQty;
@@ -703,7 +700,7 @@ report 99665 "Stock Aging Qty-Value"
             ItemApplnEntry.SetRange("Cost Application", true);
             if ItemApplnEntry.Find('-') then
                 repeat
-                    InsertTempEntry(TempAtEndingDate, ItemApplnEntry."Outbound Item Entry No.", ItemApplnEntry.Quantity, PeriodIndex);
+                    InsertTempEntry(TempAtEndingDate, ItemApplnEntry."Outbound Item Entry No.", -ItemApplnEntry.Quantity, PeriodIndex);
                 until ItemApplnEntry.Next() = 0;
         end else begin
             ItemApplnEntry.Reset();
@@ -713,7 +710,7 @@ report 99665 "Stock Aging Qty-Value"
             ItemApplnEntry.SetRange("Cost Application", true);
             if ItemApplnEntry.Find('-') then
                 repeat
-                    InsertTempEntry(TempAtEndingDate, ItemApplnEntry."Inbound Item Entry No.", -ItemApplnEntry.Quantity, PeriodIndex);
+                    InsertTempEntry(TempAtEndingDate, ItemApplnEntry."Inbound Item Entry No.", ItemApplnEntry.Quantity, PeriodIndex);
                 until ItemApplnEntry.Next() = 0;
         end;
 
@@ -766,16 +763,14 @@ report 99665 "Stock Aging Qty-Value"
         VE.Reset();
         VE.SetRange("Item Ledger Entry No.", InILE."Entry No.");
         VE.SetRange("Posting Date", 0D, AsOfDate);
-        if not IncludeExp then
-            VE.SetRange("Expected Cost", false);
+        // Apply same filters as Inventory Valuation to keep scope consistent
+        CopyValueFiltersFromItem(VE);
 
         TotalValueAsOf := 0;
         if VE.FindSet() then
             repeat
-                if IncludeExp then
-                    TotalValueAsOf += VE."Cost Amount (Actual)" + VE."Cost Amount (Expected)"
-                else
-                    TotalValueAsOf += VE."Cost Amount (Actual)";
+                // Align with Inventory Valuation: include Actual + Expected amounts
+                TotalValueAsOf += VE."Cost Amount (Actual)" + VE."Cost Amount (Expected)";
             until VE.Next() = 0;
 
         InQty := InILE.Quantity;
