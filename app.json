@@ -1,0 +1,99 @@
+{
+  "id": "c31ccd85-19df-4672-bbbf-4e3fca6a1499",
+  "name": "3KT_IND_LOC",
+  "publisher": "3K Softech Private Limited",
+  "version": "1.0.0.14",
+  "brief": "",
+  "description": "",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [
+     {
+      "id": "1150dd8d-51da-485a-bd4a-1ee98d78c21a",
+      "publisher": "Microsoft",
+      "name": "Fixed Asset Depreciation for India",
+      "version": "25.3.28755.29283"
+    },
+    {
+      "id": "07729019-da51-4639-a987-3db38ccc62c7",
+      "publisher": "Microsoft",
+      "name": "India Charge Group",
+      "version": "25.3.28755.29283"
+    },
+    {
+      "id": "2dc39818-e0f0-42b6-99eb-ba29dc5f4102",
+      "publisher": "Microsoft",
+      "name": "India Gate Entry",
+      "version": "25.3.28755.29283"
+    },
+    {
+      "id": "db643212-b7fb-4dd4-b5a8-cb44ac714461",
+      "publisher": "Microsoft",
+      "name": "India GST",
+      "version": "25.3.28755.31233"
+    },
+    {
+      "id": "050f6146-bffd-40de-942c-d0dd510ec20f",
+      "publisher": "Microsoft",
+      "name": "India Reports",
+      "version": "25.3.28755.29283"
+    },
+    {
+      "id": "d3c551dd-5903-4194-b153-04ced9d29a2c",
+      "publisher": "Microsoft",
+      "name": "India Tax Base",
+      "version": "25.3.28755.29518"
+    },
+    {
+      "id": "eddcf82e-482c-49d1-836b-ad0284f2c5b0",
+      "publisher": "Microsoft",
+      "name": "India TCS",
+      "version": "25.3.28755.29283"
+    },
+    {
+      "id": "eae5779e-7797-4c4c-977e-7516652b7a65",
+      "publisher": "Microsoft",
+      "name": "India TDS",
+      "version": "25.3.28755.29283"
+    },
+    {
+      "id": "f1d9b696-156b-4251-b542-34e549fa80e9",
+      "publisher": "Microsoft",
+      "name": "India Voucher Interface",
+      "version": "25.3.28755.29283"
+    },
+    {
+      "id": "c1eafb3f-e397-468e-bdb4-ecc5c317ca00",
+      "publisher": "Microsoft",
+      "name": "Tax Engine",
+      "version": "25.3.28755.29283"
+    },
+    {
+      "id": "b3780cd9-f8f8-4a83-a4d5-0c2ad87b28af",
+      "publisher": "Microsoft",
+      "name": "Sustainability",
+      "version": "25.3.28755.29283"
+    }
+  ],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "24.0.0.0",
+  "idRanges": [
+    {
+      "from": 99657,
+      "to": 99697
+    }
+  ],
+  "resourceExposurePolicy": {
+    "allowDebugging": true,
+    "allowDownloadingSource": false,
+    "includeSourceInSymbolFile": false
+  },
+  "runtime": "13.0",
+  "features": [
+    "NoImplicitWith"
+  ]
+}
